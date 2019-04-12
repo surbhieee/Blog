@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row" *ngIf="blogDetails">
+    <div class="col-md-12">
+      <h3 >{{blogDetails.title}}</h3>
+      <p>posted by {{blogDetails.author}} on {{blogDetails.created | date}}</p>
+      <hr>
+      <div [innerHtml]="blogDetails.bodyHtml"></div>
+      <hr>
+      <h5>category - {{blogDetails.category}}</h5>
+    </div>
+  </div>
+  <div class="row" *ngIf="blogDetails">
+    <div class="col-md-4">
+
+      <a class="btn btn-primary"  [routerLink]="['/edit',blogDetails.blogId]">Edit </a>
+
+    </div>
+    <div class="col-md-4">
+
+      <a class="btn btn-danger" (click)="deleteThisBlog()">Delete </a>
+
+    </div>
+    <div class="col-md-4">
+
+      <a class="btn btn-warning" (click)="goBack()">Go Back </a>
+    </div>
+  </div>
+</div>
+

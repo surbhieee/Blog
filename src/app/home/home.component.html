@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4  .mb-10" *ngFor="let blog of allBlogs">
+        <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">{{blog.title}}</h5>
+        <p class="card-text" [innerHtml]="blog.bodyHtml"></p>
+        <p>{{blog.description}}</p>
+        <div>created by: {{blog.author}}</div>
+        <div>created on: {{blog.created | date}}</div>
+        <a [routerLink]= "['/blog',blog.blogId]" routerLinkActive="active" class="btn btn-primary">Read</a>
+  </div>
+</div>
+    </div>
+  </div>
+</div>

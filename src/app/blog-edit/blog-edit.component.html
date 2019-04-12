@@ -1,0 +1,26 @@
+<div class="container">
+<div>
+  <form *ngIf="blogDetails" #editForm="ngForm" (ngSubmit)="editThisBlog()">
+  <div>
+  <label>Blog Title: </label>
+  <input name="blogTitle" value='blogDetails.title' [(ngModel)]="blogDetails.title" #title="ngModel" />
+  </div>
+  <div>
+  <label>Blog Description: </label>
+  <input name="blogDescription" value='blogDetails.description' [(ngModel)]="blogDetails.description" #description="ngModel" />
+  </div>
+  <div>
+  <label>Blog Author: </label>
+  <input name="blogAuthor" value='blogDetails.author' [(ngModel)]="blogDetails.author" #Author="ngModel"/>
+  </div>
+
+  <button type="submit" >Submit </button>
+  <!--<div>
+    <label>Select Category</label>
+  <select *ngFor="let option of blog.Category">
+    <option >{{option}}</option>
+  </select>
+  </div>-->
+  </form>
+</div>
+</div>
