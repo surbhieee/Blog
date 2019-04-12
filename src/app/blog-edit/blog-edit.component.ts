@@ -9,6 +9,7 @@ import { BlogHTTPServiceService } from './../blog-httpservice.service'
 })
 export class BlogEditComponent implements OnInit {
   blogDetails;
+  blogId;
   editedBlogDetails:{author,
                      description,
                      title
@@ -18,9 +19,9 @@ export class BlogEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    let blogId = this._activatedRoute.snapshot.paramMap.get('blogId');
-    console.log(blogId);
-    this.getBlogDetails(blogId);
+    this.blogId = this._activatedRoute.snapshot.paramMap.get('blogId');
+    console.log(this.blogId);
+    this.getBlogDetails(this.blogId);
   }
 
   getBlogDetails(blogId){
@@ -36,7 +37,11 @@ export class BlogEditComponent implements OnInit {
     )
   }
   editThisBlog(){
-    this.blogHttpService.editBlog(this.editedBlogDetails);
+    this.blogHttpService.editBlog(this.blogId,this.blogDetails).subscribe(
+      data=> {
+        console.log(data);
+      }
+    );
   }
 
 }
