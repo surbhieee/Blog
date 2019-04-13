@@ -9,13 +9,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { BlogCreateComponent } from './blog-create/blog-create.component';
-import { BlogDeleteComponent } from './blog-delete/blog-delete.component';
+
 import { HeaderComponent } from './header/header.component';
 import { RouterModule, Route} from '@angular/router';
 import { BlogComponent } from './blog/blog.component';
 
 const ROUTES: Route[] = [
-  { path: 'home', component: HomeComponent },
+{ path: 'home', component: HomeComponent },
 { path: 'create', component: BlogCreateComponent,},
 { path: 'blog/:blogId', component: BlogComponent },
 { path: 'edit/:blogId', component: BlogEditComponent }];
@@ -26,7 +26,6 @@ const ROUTES: Route[] = [
     HomeComponent,
     BlogEditComponent,
     BlogCreateComponent,
-    BlogDeleteComponent,
     HeaderComponent,
     BlogComponent
   ],

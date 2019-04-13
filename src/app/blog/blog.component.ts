@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { BlogHTTPServiceService } from "./../blog-httpservice.service"
 import {Location} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-blog',
@@ -10,12 +11,13 @@ import {Location} from '@angular/common';
 })
 export class BlogComponent implements OnInit {
   blogDetails;
-  constructor(private _route: ActivatedRoute, private _blogHttpService:BlogHTTPServiceService, private location: Location) { }
+  blogId
+  constructor(private _router:Router, private _route: ActivatedRoute, private toastr:ToastrService, private _blogHttpService:BlogHTTPServiceService, private location: Location) { }
   
   ngOnInit() {
-  let blogId = this._route.snapshot.paramMap.get('blogId');
-  console.log(blogId);
-  this.getBlogDetails(blogId);
+  this.blogId = this._route.snapshot.paramMap.get('blogId');
+  console.log(this.blogId);
+  this.getBlogDetails(this.blogId);
   }
 
   getBlogDetails(blogId){
@@ -29,6 +31,20 @@ export class BlogComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+  deleteThisBlog(){
+    this._blogHttpService.deleteBlog(this.blogId).subscribe(
+      data=> {
+        this.toastr.success("Blog successfully deleted");
+        setTimeout(() => {
+          this._router.navigate(['/home']);
+        }, 1000)
+        console.log(data);
+      },
+      error=>{
+        this.toastr.error(error);
+      }
+    );
   }
   goBack(){
     this.location.back();

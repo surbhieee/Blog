@@ -13,10 +13,11 @@ export class BlogHTTPServiceService {
   private allBlogs:String = "all";
   private blog:String = "view/";
   private editBlogs:String = "/edit";
-  private createBlogs:String = "/all";
-  private deleteBlogs:String = "/all";
+  private createBlogs:String = "create";
+  private deleteBlogs:String = "/delete";
   constructor(private _http: HttpClient) { }
   getAllBlogs(){
+    console.log((`${this.baseURL}${this.allBlogs}${this.authenticationToken}`));
     return this._http.get(`${this.baseURL}${this.allBlogs}${this.authenticationToken}`);
   }
   getBlogDetails(blogId){
@@ -24,13 +25,14 @@ export class BlogHTTPServiceService {
     return this._http.get(`${this.baseURL}${this.blog}${blogId}${this.authenticationToken}`);
   }
   createBlog(blogData){
-    //return this._http.get(`${this.baseURL}${this.blog}${blogId}${this.authenticationToken}`);
+    console.log(blogData);
+    return this._http.post(`${this.baseURL}${this.createBlogs}${this.authenticationToken}`, blogData);
   }
   editBlog(blogId, blogData){
     console.log(blogData);
     return this._http.put(`${this.baseURL}${blogId}${this.editBlogs}${this.authenticationToken}`, blogData);
   }
-  deleteBlog(blogData){
-    return this._http.post(this.baseURL+""+this.authenticationToken, blogData);
+  deleteBlog(blogId){
+    return this._http.post(`${this.baseURL}${blogId}${this.deleteBlogs}${this.authenticationToken}`, {});
   }
 }

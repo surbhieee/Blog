@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import { BlogHTTPServiceService } from './../blog-httpservice.service'
+import { ToastrService } from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-blog-edit',
@@ -14,7 +16,7 @@ export class BlogEditComponent implements OnInit {
                      description,
                      title
                     };
-  constructor(private _activatedRoute:ActivatedRoute, private blogHttpService:BlogHTTPServiceService) { 
+  constructor(private _router: Router, private _activatedRoute:ActivatedRoute, private blogHttpService:BlogHTTPServiceService, private toastr:ToastrService) { 
     
   }
 
@@ -39,9 +41,16 @@ export class BlogEditComponent implements OnInit {
   editThisBlog(){
     this.blogHttpService.editBlog(this.blogId,this.blogDetails).subscribe(
       data=> {
+        this.toastr.success("Blog successfully edited");
+        setTimeout(() => {
+          this._router.navigate(['/home']);
+        }, 1000)
         console.log(data);
+      },
+      error=>{
+        this.toastr.error(error);
       }
     );
   }
-
+  
 }
