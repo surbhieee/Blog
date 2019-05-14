@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { BlogHTTPServiceService } from './../blog-httpservice.service'
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-home',
@@ -26,5 +27,25 @@ export class HomeComponent implements OnInit {
       }
     )
   }
+   ngAfterViewInit(){
+      //  ($(".item")).gridalicious({
+      //    width: 250,
+      //    gutter: 10,
+      //    animate: true,
+      //    effect: 'fadeInOnAppear'
+      //  }); 
+
+      // ($(".galcolumn")).gridalicious({
+      //    width: 240,
+      //    gutter: 10,
+      //    animate: true,
+      //    effect: 'fadeInOnAppear'
+      //  });    
+      
+       (<any>$("#container") ).gridalicious({selector: ".item"});
+
+      console.log((<any>jQuery.fn).gridalicious);
+
+    }
 
 }

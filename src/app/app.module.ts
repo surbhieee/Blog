@@ -14,6 +14,10 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule, Route} from '@angular/router';
 import { BlogComponent } from './blog/blog.component';
 
+import * as $ from 'jquery';
+// window["$"] = $;
+// window["jQuery"] = $;
+
 const ROUTES: Route[] = [
 { path: 'home', component: HomeComponent },
 { path: 'create', component: BlogCreateComponent,},

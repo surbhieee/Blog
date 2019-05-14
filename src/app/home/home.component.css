@@ -1,3 +1,11 @@
 .col-md-4 {
   margin-bottom: 15px !important;
+  
+}
+.card{
+  height: 300px;
+}
+
+btn-primary{
+  align-self: flex-end;
 }
