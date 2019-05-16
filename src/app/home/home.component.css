@@ -5,7 +5,30 @@
 .card{
   height: 300px;
 }
+.blogDescription{
+  width:200px;
+    height:2em;
+    line-height:1em;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.container-fluid{
+  margin-top: 1em;
+}
 
 btn-primary{
   align-self: flex-end;
+}
+.footerClass {
+  max-width: 95%;
+  word-wrap: break-word;
+  height:90px;
+  position: absolute;
+  bottom: 0px;
+}
+@media screen and (max-width:435px){
+  footer.footerClass{
+    align-content: flex-end!important;
+  }
 }
