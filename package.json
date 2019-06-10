@@ -23,6 +23,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "grid-a-licious": "^3.1.0",
+    "handlebars": "^4.1.2",
     "jquery": "^3.4.0",
     "ngx-bootstrap": "^4.0.1",
     "ngx-toastr": "^10.0.2",
